@@ -57,4 +57,5 @@ Due to the graphical nature of the Java application, running the GUI may not be 
 
 ## Badges
 ![Gradle Build](https://github.com/Kiefer2408/ClockSystem-TP3/actions/workflows/gradle.yml/badge.svg)
+![PMD Analysis](https://img.shields.io/github/workflow/status/Kiefer2408/ClockSystem-TP3/actions/workflows/pmd-analysis.yml/badge.svg)
 
