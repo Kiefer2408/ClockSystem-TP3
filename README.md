@@ -59,4 +59,5 @@ Due to the graphical nature of the Java application, running the GUI may not be 
 ![Gradle Build](https://github.com/Kiefer2408/ClockSystem-TP3/actions/workflows/gradle.yml/badge.svg)
 ![PMD Analysis](https://github.com/Kiefer2408/ClockSystem-TP3/actions/workflows/pmd-analysis.yml/badge.svg)
 ![CodeQL](https://github.com/Kiefer2408/ClockSystem-TP3/actions/workflows/codeql.yml/badge.svg)
+![ScoreCard](https://github.com/Kiefer2408/ClockSystem-TP3/actions/workflows/scorecard.yml/badge.svg)
 
