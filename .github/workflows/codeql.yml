@@ -20,6 +20,40 @@ on:
     - cron: '22 22 * * 5'
 
 jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 23
+      uses: actions/setup-java@v4
+      with:
+        java-version: '23'
+        distribution: 'temurin'
+
+    - name: Start Xvfb
+      run: Xvfb $DISPLAY -ac -screen 0 1600x1200x24 > /dev/null 2>&1 &
+    # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
+    # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+      
+    - name: Build with Gradle
+      run: gradle build
+
+    - name: Upload Test Report
+      uses: actions/upload-artifact@v4
+      with:
+        path: app/build/reports/tests
+    env:
+      DISPLAY: ":99.0" 
+    services:
+      xvfb:
+        image: selenium/standalone-chrome:latest
+        options: -e VNC_SERVER=true -e VNC_PORT=5900
   analyze:
     name: Analyze (${{ matrix.language }})
     # Runner size impacts CodeQL analysis time. To learn more, please see:
