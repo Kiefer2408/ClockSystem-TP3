@@ -55,5 +55,6 @@ Due to the graphical nature of the Java application, running the GUI may not be 
 3. Open the project in your IDE, and you should see a notification to reopen the project in a container, click on it.
 4. Once the project is reopened in the container, you need to wait a bit for the container to build and start, and then you can start developing, all the tools and dependencies are already installed in the container.
 
-
+## Badges
+![Gradle Build](https://github.com/Kiefer2408/ClockSystem-TP3/actions/workflows/gradle.yml/badge.svg)
 
