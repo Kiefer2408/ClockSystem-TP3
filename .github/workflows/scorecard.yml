@@ -1,0 +1,36 @@
+name: Security Analysis with OpenSSF Scorecard
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  security_analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Run Scorecard analysis
+        uses: ossf/scorecard-action@v2
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          publish_results: true
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: SARIF file
+          path: results.sarif
+          retention-days: 5
+
+      - name: Upload SARIF results to code scanning
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
